@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <!-- 1. View 层 -->
+    <!-- Vue实例控制div的内容 -->
+    <div id="app">
+        <h1>Hey,{{ name }}</h1>
+        <p>Welcome to,{{ msg }}</p>
+        <p>Its {{ greet('morning') }}</p>
+        <a v-bind:href="website">web开发</a>
+        <input type="text" v-bind:value="name">
+        <p v-html="websiteTag"></p>
+    </div>
+
+    <script>
+    // 2. VM 层：创建一个Vue实例
+    var vm = new Vue({
+        el: '#app',// 表示当前的vue实例，要控制页面上的某个区域
+    // 3. M 层：model 数据
+        data: {   // data属性中，存放 el 所需要用的数据
+            msg: '欢迎学习vue', // 数据渲染到页面，不再使用DOM操作
+            name: 'wumengxuan',
+            website: 'www.zhihu.com',
+            websiteTag: "<a href='www.baidu.com'>NewTag</a>"
+        },
+        methods: {
+            greet: function(time){
+                return 'Good ' + time + '!' + this.name;
+            }
+        }
+    })                
+    </script>  
+    </body>
+</html>
